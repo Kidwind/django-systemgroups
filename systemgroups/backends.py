@@ -1,5 +1,6 @@
 # coding=UTF-8
 from __future__ import unicode_literals
+from django.db import models
 from .base import get_user_systemgroups, get_user_systemgroups_for_obj, get_groups_permissions
 
 
@@ -24,6 +25,9 @@ class SystemGroupBackend(object):
         result_perms.update(user_obj._systemgroup_perm_cache)
 
         if obj is None:
+            return result_perms
+
+        if isinstance(obj, models.Model) and obj.pk is None:
             return result_perms
 
         if not hasattr(user_obj, '_systemgroup_perm_cache_for_obj'):
