@@ -9,7 +9,7 @@ from django.conf import settings
 from django.db import models
 
 from .base import get_user_systemgroups, get_user_systemgroups_for_obj
-from .systemgroups import init_systemgroups, SYSTEM_GROUP_EVERYONE, \
+from .systemgroups import SYSTEM_GROUP_EVERYONE, \
     SYSTEM_GROUP_ANONYMOUS, SYSTEM_GROUP_USERS, SYSTEM_GROUP_STAFFS, \
     SYSTEM_GROUP_CREATOR, SYSTEM_GROUP_OWNER
 from .models import CreatorMixin, OwnerMixin
@@ -36,8 +36,6 @@ class Info(CreatorMixin, OwnerMixin, models.Model):
 
 class SystemGroupTestCaseMixin(object):
     def setUp(self):
-        init_systemgroups()
-
         User = get_user_model()
 
         user = User()

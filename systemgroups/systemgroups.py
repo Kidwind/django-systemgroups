@@ -14,19 +14,6 @@ SYSTEM_GROUP_CREATOR = "Creator"        # 创建者
 SYSTEM_GROUP_OWNER = "Owner"            # 所有者
 
 
-def init_systemgroups():
-    """
-    初始化系统组。
-    :return:
-    """
-    Group.objects.get_or_create(name=SYSTEM_GROUP_EVERYONE)
-    Group.objects.get_or_create(name=SYSTEM_GROUP_ANONYMOUS)
-    Group.objects.get_or_create(name=SYSTEM_GROUP_USERS)
-    Group.objects.get_or_create(name=SYSTEM_GROUP_STAFFS)
-    Group.objects.get_or_create(name=SYSTEM_GROUP_CREATOR)
-    Group.objects.get_or_create(name=SYSTEM_GROUP_OWNER)
-
-
 def get_user_systemgroups(user):
     """
     获取指定用户所属的系统组集合。
