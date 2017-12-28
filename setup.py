@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from setuptools import setup
 
 
-VERSION = '1.0.0.dev1'
+VERSION = '1.0.0'
 
 setup(
     name='django-systemgroups',
@@ -14,6 +14,7 @@ setup(
     zip_safe=False,
     packages=[
         'systemgroups',
+        'systemgroups.migrations',
     ],
     keywords='django system groups',
     license='BSD',
