@@ -22,7 +22,7 @@ def get_user_systemgroups(user):
     """
     groups = set()
     groups.add(SYSTEM_GROUP_EVERYONE)
-    if user.is_anonymous():
+    if user.is_anonymous:
         groups.add(SYSTEM_GROUP_ANONYMOUS)
     else:
         groups.add(SYSTEM_GROUP_USERS)
