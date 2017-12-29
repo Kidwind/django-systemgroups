@@ -38,3 +38,14 @@ class SystemGroupBackend(object):
             user_obj._systemgroup_perm_cache_for_obj[obj] = perms
         result_perms.update(user_obj._systemgroup_perm_cache_for_obj[obj])
         return result_perms
+
+    def has_module_perms(self, user_obj, app_label):
+        """
+        Return True if user_obj has any permissions in the given app_label.
+        """
+        if not user_obj.is_active:
+            return False
+        for perm in self.get_all_permissions(user_obj):
+            if perm[:perm.index('.')] == app_label:
+                return True
+        return False
