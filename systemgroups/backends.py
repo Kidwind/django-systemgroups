@@ -28,6 +28,10 @@ class SystemGroupBackend(object):
             return result_perms
 
         if isinstance(obj, models.Model) and obj.pk is None:
+		    # 如果 obj 为未持久化的对象，无法进行权限的缓存，则直接获取 user 及 obj 的系统组权限并返回
+            groups = get_user_systemgroups_for_obj(user_obj, obj)
+            perms = get_groups_permissions(groups)
+            result_perms.update(perms)
             return result_perms
 
         if not hasattr(user_obj, '_systemgroup_perm_cache_for_obj'):
